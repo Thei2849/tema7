@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML struktur</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+         <h1>Titel</h1>
+    </header>
+    <main>
+
+        <h2>Undertitel</h2>
+         <section>
+
+             <article>
+              <img src="http://placeimg.com/640/480/any">
+                <h3>Article 1</h3>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+
+             </article>
+
+             <article>
+              <img src="http://placeimg.com/640/480/any">
+                <h3>Article 2</h3>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+
+             </article>
+         </section>
+    </main>
+
+   <footer>
+       <p>This is the footer</p>
+   </footer>
+
+
+
+    <script>
+
+       const overskrift = document.querySelector("h1");
+        overskrift.textContent;
+       console.log(overskrift.textContent);
+
+        const overskift2 = document.querySelector("h2");
+        overskift2.textContent;
+        console.log(overskift2.textContent);
+
+        const overskrift3 = document.querySelector("h3");
+        overskrift3.textContent;
+        console.log(overskrift3.textContent);
+
+        const article2 = document.querySelector("article:nth-child(2)");
+        console.log(article2);
+
+
+    </script>
+</body>
+</html>
