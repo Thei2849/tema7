@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML struktur</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+         <h1>Titel</h1>
+    </header>
+    <main>
+
+        <h2>Undertitel</h2>
+         <section>
+
+             <article>
+              <img src="http://placeimg.com/640/480/any">
+                <h3>Article 1</h3>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+
+             </article>
+
+             <article>
+              <img src="http://placeimg.com/640/480/any">
+                <h3>Article 2</h3>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+
+             </article>
+         </section>
+    </main>
+
+   <footer>
+       <p>This is the footer</p>
+   </footer>
+
+
+
+    <script>
+
+
+        let mainSection = document.querySelector("section");
+
+        //Nyt article element
+        let newArticle = document.createElement("article");
+
+        //nyt h3 element
+        let overskrift = document.createElement("h3");
+
+        //tekst til overskriften
+        let overskriftText = document.createTextNode("Article 3");
+
+        //indsæt tekst i overskrift
+            overskrift.appendChild(overskriftText);
+
+        //tilføj overskrift til article
+            newArticle.appendChild(overskrift);
+
+        //tiføj til article til section
+            mainSection.appendChild(newArticle);
+
+
+        let newParagraph = document.createElement("p");
+
+        let newParagraphText = document.createTextNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
+
+            newParagraph.appendChild(newParagraphText);
+
+            newArticle.appendChild(newParagraph);
+
+            mainSection.appendChild(newArticle);
+
+
+
+        let newImage = document.createElement("img");
+
+        let newImageContent = document.createElement("src=jorden.jpeg");
+
+            newImage.appendChild(newImageContent);
+
+            newArticle.appendChild(newImage);
+
+            mainSection.appendChild(newArticle);
+
+
+    </script>
+</body>
+</html>
