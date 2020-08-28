@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+   <article id="dyr">
+
+
+
+   </article>
+
+
+    <script >
+
+    document.addEventListener("DOMContentLoaded", start);
+
+    function start(){
+
+    let dyr = {"navn":"Gris","type":"Pattedyr","levested":"svinesti","billede":"http://mabe-kea.dk/E19/pics/pig.png"}
+
+    console.log(`Dyr: ${dyr.navn} type: ${dyr.type} levested: ${dyr.levested} billede: ${dyr.billede}`);
+
+
+    let mainSection = document.querySelector("section");
+
+    let newArticle = document.createElement("article");
+
+    let overskrift = document.createElement("h3");
+
+    let overskriftText = document.createTextNode("Gris");
+
+    overskrift.appendChild(overskriftText);
+
+    newArticle.appendChild(overskrift);
+
+    mainSection.appendChild(newArticle);
+
+    }
+
+
+    </script>
+</body>
+</html>
