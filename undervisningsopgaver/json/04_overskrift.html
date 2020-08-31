@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        article {
+            border: 1px solid #333;
+            padding: 10px;
+            font-family: sans-serif;
+            border-radius: 2px;
+            display: flex;
+            object-fit: fill;
+        }
+
+        img {
+            max-width: 30%;
+            border-radius: 50px;
+        }
+
+        section {
+            width: 90vw;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: center;
+        }
+
+        .navn,
+        .efternavn {
+            padding: 5px;
+            display: flex;
+            align-self: center;
+        }
+
+        button {
+            box-shadow: 0px 10px 14px -7px #fffaff;
+            background: linear-gradient(to bottom, #474747 5%, #000000 100%);
+            background-color: #474747;
+            border-radius: 8px;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: 'Raleway', sans-serif;
+            font-size: 20px;
+            font-weight: normal;
+            padding: 13px 32px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #9e9e9e;
+        }
+
+        button:hover {
+            background: linear-gradient(to bottom, #000000 5%, #474747 100%);
+            background-color: #000000;
+        }
+
+        button:active {
+            position: relative;
+            top: 1px;
+        }
+
+        h1 {
+            font-family: 'Raleway', sans-serif;
+            padding: 20px;
+            font-size: 100px;
+        }
+
+
+    </style>
+
+</head>
+
+<header>
+    <button class="filter valgt" data-køn="alle">Alle</button>
+    <button class="filter" data-køn="m">Mænd</button>
+    <button class="filter" data-køn="k">Kvinder</button>
+    <button class="filter" data-køn="andet">Andet</button>
+</header>
+
+<h1>Alle</h1>
+
+<body>
+    <section id="list">
+
+    </section>
+
+    <template>
+        <article>
+            <h2></h2>
+            <img src="" alt="">
+            <p class="navn"></p>
+            <p class="efternavn"></p>
+        </article>
+    </template>
+
+    <script>
+        let personer;
+        let filter = "alle";
+        document.addEventListener("DOMContentLoaded", loadJSON)
+
+        async function loadJSON(){
+            const JSONData = await
+            fetch("https://spreadsheets.google.com/feeds/list/1mtHhpoEkYqVqr1TSnKQ1_sQZWI7FRVjcw3H1oatDOVQ/od6/public/values?alt=json");
+            personer = await JSONData.json();
+            addEventListenersToButtons();
+            visPersoner();
+        }
+
+        function visPersoner(){
+            const templatePointer = document.querySelector("template");
+            const listPointer = document.querySelector("#list");
+            listPointer.innerHTML = "";
+            personer.feed.entry.forEach(person => {
+                if (filter == "alle" || filter == person.gsx$køn.$t) {
+                    console.log(person);
+                    const minKlon = templatePointer.cloneNode(true).content;
+                    minKlon.querySelector("h2").textContent = person.gsx$navn.$t;
+                    minKlon.querySelector("img").src = person.gsx$billede.$t;
+                    listPointer.appendChild(minKlon);
+                }
+            })
+        }
+
+        function addEventListenersToButtons() {
+            document.querySelectorAll(".filter").forEach(btn => {
+                btn.addEventListener("click", filterBTNs);
+            })
+        };
+
+        function filterBTNs() {
+            filter = this.dataset.køn;
+            document.querySelector("h1").textContent = this.textContent;
+            document.querySelectorAll(".filter").forEach((btn) => {
+                btn.classList.remove("valgt");
+            })
+            this.classList.add("valgt");
+            visPersoner();
+        }
+
+    </script>
+</body>
+
+</html>
